@@ -1,0 +1,20 @@
+<script> 
+// add class to 'li' on scroll in own section  
+// contao e.g. onepager nav
+// inspired by https://stackoverflow.com/questions/52025615/vanilla-js-change-active-state-of-links-when-scrolling-refactoring  
+
+  const links = document.querySelectorAll('.onepage_navigation__list li a');
+  const sections = document.querySelectorAll('.mod_article');
+
+  function changeLinkState() {
+    let index = sections.length;
+
+    while(--index && window.scrollY + 50 < sections[index].offsetTop) {}
+    
+    links.forEach((link) => link.classList.remove('is-active'));
+    links[index].classList.add('is-active');
+  }
+
+  changeLinkState();
+  window.addEventListener('scroll', changeLinkState);
+</script>
